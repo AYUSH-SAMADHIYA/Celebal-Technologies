@@ -36,13 +36,12 @@ A beginner-friendly React application that implements a form with field validati
 
 ### 📋 Form Page
 
-=======
-![Form Screenshot](Assignment-1\react-form\Screenshots\Form_page-1.png)
-![Form Screenshot](Assignment-1\react-form\Screenshots\Form_page-2.png)
+![Form Screenshot](./Screenshots/Form_page-1.png)
+![Form Screenshot](./Screenshots/Form_page-2.png)
 
 ### ✅ Success Page
 
-![Success Screenshot](Assignment-1\react-form\Screenshots\Success_page.png)
+![Success Screenshot](./Screenshots/Success_page.png)
 
 ---
 
@@ -76,9 +75,7 @@ react-form/
 #### 1. Clone the Repository
 
 ```bash
-
-git clone https://github.com/YOUR_USERNAME/react-form.git
-cd react-form
+git clone https://github.com/AYUSH-SAMADHIYA/Celebal-Technologies
 npm start
 
 This runs the app in development mode at:
