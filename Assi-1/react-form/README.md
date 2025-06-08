@@ -76,6 +76,7 @@ react-form/
 
 ```bash
 git clone https://github.com/AYUSH-SAMADHIYA/Celebal-Technologies
+cd react-form
 npm start
 
 This runs the app in development mode at:
