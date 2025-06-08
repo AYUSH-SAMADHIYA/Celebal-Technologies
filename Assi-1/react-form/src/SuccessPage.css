@@ -1,0 +1,46 @@
+
+.success-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #e6f0ff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+  }
+  
+  .success-container h2 {
+    color: #007bff;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .success-container p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+  
+  .success-container .highlight {
+    font-weight: 600;
+    color: #000;
+  }
+  
+  .success-container button {
+    margin-top: 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .success-container button:hover {
+    background-color: #0056b3;
+  }
+  
