@@ -37,7 +37,7 @@ This is a comprehensive web-based dashboard application built with React, design
 ![User_Profile Overview](./Screenshots/3.png)
 
 ### Kanban Board
-![Kanban Board](./Screenshots/4.png.png)
+![Kanban Board](./Screenshots/4.png)
 
 ### Calendar Page Overview
 ![Calendar Overview](./Screenshots/5.png)
