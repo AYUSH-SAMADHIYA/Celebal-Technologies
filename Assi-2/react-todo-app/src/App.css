@@ -1,0 +1,22 @@
+.App {
+  background-color: #FFFFFF; 
+  border-radius: 12px; 
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
+  padding: 40px;
+  max-width: 500px;
+  width: 100%; 
+  text-align: center;
+  margin: 0 auto; 
+  transition: transform 0.3s ease-in-out; 
+}
+
+.App:hover {
+  transform: translateY(-5px); 
+}
+
+.app-title {
+  color: #4CAF50; 
+  font-size: 2.2em;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05); 
+}
