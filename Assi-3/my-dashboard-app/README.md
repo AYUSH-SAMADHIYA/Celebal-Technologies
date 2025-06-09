@@ -93,13 +93,7 @@ This is a comprehensive web-based dashboard application built with React, design
 * **Persistent Data:** All users, tasks, and events are stored in your browser's Local Storage, so your data persists even after you close and reopen the browser.
 * **Toast Notifications:** Provides real-time feedback for actions like adding/deleting users/tasks, and moving tasks.
 
-## Screenshots
 
-### Dashboard Overview
-![Dashboard Overview](assets/dashboard-overview.png)
-
-### Kanban Board
-![Kanban Board](assets/kanban-board.png)
 
 
 ## Technologies Used
