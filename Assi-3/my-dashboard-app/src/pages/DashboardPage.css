@@ -1,0 +1,149 @@
+.dashboard-content {
+  padding: 30px;
+  background-color: var(--background-color); /* Use main background color */
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.greeting-section {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: var(--accent-bg-color); /* A slightly different background */
+  border-radius: 8px;
+  box-shadow: var(--light-shadow);
+}
+
+.greeting-section h1 {
+  font-size: 2.8em;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.greeting-section p {
+  font-size: 1.1em;
+  color: var(--text-secondary-color);
+}
+
+.kpi-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 25px;
+  justify-content: center;
+}
+
+.kpi-card {
+  background-color: var(--card-bg-color);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.kpi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--hover-shadow);
+}
+
+.card-title {
+  font-size: 1.5em;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.card-main-metric {
+  font-size: 3em;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card-details {
+  font-size: 0.95em;
+  color: var(--text-color);
+}
+
+.card-details h3 {
+  font-size: 1.1em;
+  color: var(--text-color);
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+.user-list,
+.event-list,
+.card-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-list li,
+.card-details ul li {
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--border-color-light);
+  color: var(--text-secondary-color);
+}
+
+.user-list li:last-child,
+.card-details ul li:last-child {
+  border-bottom: none;
+}
+
+/* Specific card color adjustments */
+.user-card .card-main-metric { color: #28a745; /* Green */ }
+.task-card .card-main-metric { color: #007bff; /* Blue */ }
+.event-card .card-details {
+  color: var(--text-color);
+}
+.event-card .card-title {
+  color: #ffc107; /* Orange/Yellow */
+}
+
+.event-list li {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.event-list li:last-child {
+  margin-bottom: 0;
+}
+
+.event-date {
+  font-size: 0.85em;
+  color: var(--text-secondary-color);
+}
+
+.card-details ul li span {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .kpi-cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 20px;
+  }
+  .greeting-section h1 {
+    font-size: 2em;
+  }
+  .kpi-cards-container {
+    grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+  }
+}

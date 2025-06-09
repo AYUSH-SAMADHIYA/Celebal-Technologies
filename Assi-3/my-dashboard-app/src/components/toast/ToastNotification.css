@@ -1,0 +1,51 @@
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  /* Animation properties */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  z-index: 1001; /* Above modal overlay */
+}
+
+.toast-container.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-container.success {
+  background-color: var(--success-color);
+}
+
+.toast-container.error {
+  background-color: var(--danger-color);
+}
+
+.toast-container.info {
+  background-color: var(--primary-color);
+}
+
+.toast-close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 5px;
+}
+
+.toast-close-button:hover {
+  opacity: 0.8;
+}

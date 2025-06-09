@@ -1,0 +1,298 @@
+.calendar-page-content {
+  background-color: #f8f8f8; /* Light background for the calendar area */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  max-width: 900px; /* Max width for the calendar grid */
+  margin: 20px auto; /* Center the calendar */
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.calendar-page-content .page-title {
+  text-align: center;
+  color: #5cb85c; /* A shade of green matching the screenshot */
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.calendar-nav-buttons,
+.calendar-view-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.calendar-button {
+  background-color: #e0ffe0; /* Light green button background */
+  color: #3a8a3a; /* Darker green text */
+  border: 1px solid #a8e6a8;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.calendar-button:hover {
+  background-color: #c0f5c0;
+  border-color: #7ad17a;
+}
+
+.calendar-button.active {
+  background-color: #5cb85c; /* Active button is darker green */
+  color: white;
+  border-color: #4CAF50;
+}
+
+.calendar-button.today-button {
+  background-color: #f0f0f0; /* Grey for today button */
+  color: #555;
+  border-color: #ddd;
+}
+.calendar-button.today-button:hover {
+  background-color: #e0e0e0;
+}
+
+.calendar-title {
+  font-size: 1.8em;
+  color: #333;
+  margin: 0 20px;
+  flex-grow: 1; /* Allow title to take available space */
+  text-align: center;
+}
+
+.days-of-week-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #f0fff0; /* Very light green for day names header */
+  border-bottom: 1px solid #e0ffe0;
+  padding: 10px 0;
+  font-weight: bold;
+  color: #666;
+}
+
+.day-name {
+  text-align: center;
+  padding: 5px 0;
+}
+
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-week-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 1px solid #e0ffe0;
+  min-height: 100px; /* Minimum height for each week row */
+}
+
+.calendar-day-cell {
+  padding: 10px;
+  border-right: 1px solid #e0ffe0;
+  position: relative;
+  min-height: 100px; /* Ensure cells have height */
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.calendar-day-cell:hover {
+  background-color: #f5fff5;
+}
+
+.calendar-day-cell:last-child {
+  border-right: none;
+}
+
+.day-number {
+  font-weight: bold;
+  color: #444;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  display: block; /* Ensure it takes its own line */
+}
+
+.calendar-day-cell.other-month .day-number {
+  color: #bbb; /* Grey out days from other months */
+}
+
+.calendar-day-cell.today-cell {
+  background-color: #fffacd; /* Light yellow for today's cell */
+  border: 1px solid #ffeb3b;
+  z-index: 1; /* Bring today cell slightly forward */
+  box-shadow: 0 0 5px rgba(255, 235, 59, 0.5);
+}
+
+.calendar-day-cell.today-cell .day-number {
+  color: #b3a000; /* Darker yellow/gold for today's number */
+}
+
+.day-events {
+  margin-top: 5px;
+  font-size: 0.85em;
+}
+
+.event-item {
+  background-color: #8bc34a; /* Green background for events */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  cursor: default; /* Change cursor back to default for event item */
+}
+
+.event-item .event-title {
+    flex-grow: 1;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden;    /* Hide overflow text */
+    text-overflow: ellipsis; /* Show ellipsis for overflow */
+}
+
+
+.event-delete-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 3px;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.event-delete-button:hover {
+  opacity: 0.7;
+}
+
+/* --- Week View Styles --- */
+.calendar-week-view {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border: 1px solid #e0ffe0;
+  margin-top: 20px;
+}
+
+.week-day-column {
+  border-right: 1px solid #e0ffe0;
+  padding: 15px 10px;
+  min-height: 300px; /* Adjust height as needed */
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.week-day-column:last-child {
+  border-right: none;
+}
+
+.week-day-column:hover {
+  background-color: #f5fff5;
+}
+
+.week-day-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.week-day-header .day-name {
+  font-weight: bold;
+  color: #555;
+  font-size: 1.1em;
+}
+
+.week-day-header .day-number {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #333;
+}
+
+.week-day-column.today-column {
+  background-color: #fffacd;
+  border: 1px solid #ffeb3b;
+  box-shadow: 0 0 5px rgba(255, 235, 59, 0.5);
+}
+
+.week-day-column.today-column .week-day-header .day-number {
+  color: #b3a000;
+}
+
+
+/* --- Day View Styles --- */
+.calendar-day-view {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #e0ffe0;
+  margin-top: 20px;
+}
+
+.day-column {
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  min-height: 400px; /* Adjust height as needed */
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.day-column:hover {
+  background-color: #f5fff5;
+}
+
+.day-column-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.day-column-header .day-name {
+  font-weight: bold;
+  color: #555;
+  font-size: 1.2em;
+}
+
+.day-column-header .day-number {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+.day-column.today-column {
+  background-color: #fffacd;
+  border: 1px solid #ffeb3b;
+  box-shadow: 0 0 5px rgba(255, 235, 59, 0.5);
+}
+
+.day-column.today-column .day-column-header .day-number {
+  color: #b3a000;
+}
+
+.day-view-event-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #8bc34a;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.event-time {
+  font-weight: bold;
+  font-size: 0.9em;
+}
