@@ -19,7 +19,7 @@ A modern and interactive To-Do List app built with React. Users can manage tasks
 ---
 
 
-![Form Screenshot](./Screenshots/Form_page-1.png)
+![Form Screenshot](Todo-app.png)
 
 ## Technologies Used
 
