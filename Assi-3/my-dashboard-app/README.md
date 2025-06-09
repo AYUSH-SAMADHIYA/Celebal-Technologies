@@ -28,10 +28,24 @@ This is a comprehensive web-based dashboard application built with React, design
 ## Screenshots
 
 ### Dashboard Overview
-![Dashboard Overview](assets/dashboard-overview.png)
+![Dashboard Overview](./Screenshots/1.png)
+
+### User Page Overview
+![User_Page Overview](./Screenshots/2.png)
+
+### User Profile Overview
+![User_Profile Overview](./Screenshots/3.png)
 
 ### Kanban Board
-![Kanban Board](assets/kanban-board.png)
+![Kanban Board](./Screenshots/4.png.png)
+
+### Calendar Page Overview
+![Calendar Overview](./Screenshots/5.png)
+
+### Chart Page Overview
+![Chart_Page Overview](./Screenshots/6.png)
+
+
 
 
 ## Technologies Used
