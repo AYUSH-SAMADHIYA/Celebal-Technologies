@@ -59,6 +59,6 @@ A modern and interactive To-Do List app built with React. Users can manage tasks
 ### Installation
 
 ```bash
-git clone <[YOUR_REPOSITORY_UR](https://github.com/AYUSH-SAMADHIYA/Celebal-Technologies/edit/main/Assi-2>
+git clone <https://github.com/AYUSH-SAMADHIYA/Celebal-Technologies/edit/main/Assi-2>
 cd <react-todo-app>
 npm start
