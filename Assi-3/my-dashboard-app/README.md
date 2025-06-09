@@ -182,7 +182,6 @@ Make sure you have the following installed on your machine:
   
     ```
     npm start
- 
     ```
 2.  The application will open in your default web browser at `http://localhost:3000`.
 
