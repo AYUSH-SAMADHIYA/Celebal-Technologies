@@ -174,8 +174,6 @@ Make sure you have the following installed on your machine:
 2.  **Install dependencies:**
     ```
     npm install
-    # or
-    yarn install
     ```
 
 ### Running the Development Server
@@ -191,7 +189,7 @@ Make sure you have the following installed on your machine:
 ## Usage
 
 * Navigate through the app using the top navigation bar to access Dashboard, Users, Kanban, Calendar, and Charts pages.
-* On the **Users** page, add new users. Click on a user to view their profile and assign tasks.
-* On the **Kanban** board, add new tasks and move them between columns.
+* On the **Users** page, add new users. Click on a user to view their profile and update tasks.
+* On the **Kanban** board, assign new tasks to users and move them between columns.
 * On the **Calendar** page, add and manage events.
 * The **Dashboard** and **Charts** pages will automatically reflect changes made on the Users and Kanban pages.
