@@ -44,6 +44,8 @@ This is a comprehensive web-based dashboard application built with React, design
 
 ### Chart Page Overview
 ![Chart_Page Overview](./Screenshots/6.png)
+![Chart_Page Overview](./Screenshots/7.png)
+
 
 
 
