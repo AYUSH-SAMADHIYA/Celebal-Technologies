@@ -182,7 +182,7 @@ const ChartPage = () => {
                   <Line type="monotone" dataKey="New Features" stroke="#82ca9d" />
                 </LineChart>
               </ResponsiveContainer>
-              <p className="chart-description">An example line chart showing hypothetical tasks completed and new features added over several months.</p>
+              <p className="chart-description"></p>
             </div>
           )}
 
@@ -203,7 +203,7 @@ const ChartPage = () => {
                   <Area type="monotone" dataKey="New Features" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
                 </AreaChart>
               </ResponsiveContainer>
-              <p className="chart-description">An example area chart illustrating the cumulative progress of tasks and features over time.</p>
+              <p className="chart-description"></p>
             </div>
           )}
         </div>
