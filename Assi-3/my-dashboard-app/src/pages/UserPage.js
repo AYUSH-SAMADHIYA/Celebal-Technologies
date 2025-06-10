@@ -7,20 +7,10 @@ import ToastNotification from '../components/toast/ToastNotification';
 
 // Dummy Data (no change here)
 const initialUsers = [
-  { id: 1, name: 'Alice', tasks: [
-    { id: 't1', project: 'Admin Dashboard', status: 'completed', name: 'Design the UI' },
-    { id: 't2', project: 'Admin Dashboard', status: 'ongoing', name: 'Implement Theming' },
-    { id: 't3', project: 'E-commerce Site', status: 'ongoing', name: 'Implement Checkout' },
-    { id: 't7', project: 'Personal', status: 'new', name: 'Review Q3 Performance' },
-  ]},
-  { id: 2, name: 'Bob', tasks: [
-    { id: 't4', project: 'Marketing Campaign', status: 'new', name: 'Plan Adverts' },
-    { id: 't5', project: 'Website Redesign', status: 'completed', name: 'Update Homepage' },
-  ]},
-  { id: 3, name: 'Charlie', tasks: []},
-  { id: 4, name: 'Diana', tasks: [
-    { id: 't6', project: 'Mobile App', status: 'ongoing', name: 'Develop API' },
-  ]},
+  { id: 1, name: 'Alice', tasks: [] },
+  { id: 2, name: 'Bob', tasks: [] },
+  { id: 3, name: 'Charlie', tasks: [] },
+  { id: 4, name: 'Diana', tasks: [] },
 ];
 
 const UserPage = () => {
@@ -59,6 +49,47 @@ const UserPage = () => {
     }
   }, [users, selectedUser]);
 
+  // Effect to sync tasks assigned in KanbanPage from localStorage
+  useEffect(() => {
+    const storedKanbanTasks = localStorage.getItem('kanbanTasks');
+    if (storedKanbanTasks) {
+      try {
+        const kanbanTasks = JSON.parse(storedKanbanTasks);
+        if (Array.isArray(kanbanTasks)) {
+          // Map userId to tasks assigned
+          const userTaskMap = {};
+          kanbanTasks.forEach(task => {
+            if (task.assignedTo) {
+              if (!userTaskMap[task.assignedTo]) {
+                userTaskMap[task.assignedTo] = [];
+              }
+              userTaskMap[task.assignedTo].push({
+                id: task.id,
+                project: 'Kanban',
+                status: task.status === 'todo' ? 'new' : task.status === 'inprogress' ? 'ongoing' : 'completed',
+                name: task.title,
+              });
+            }
+          });
+          // Update users with assigned tasks from Kanban
+          setUsers(prevUsers => {
+            return prevUsers.map(user => {
+              const kanbanAssignedTasks = userTaskMap[user.id] || [];
+              // Filter out Kanban tasks from existing tasks to avoid duplicates
+              const nonKanbanTasks = user.tasks.filter(t => t.project !== 'Kanban');
+              return {
+                ...user,
+                tasks: [...nonKanbanTasks, ...kanbanAssignedTasks],
+              };
+            });
+          });
+        }
+      } catch (e) {
+        console.error('Error parsing kanbanTasks in UserPage:', e);
+      }
+    }
+  }, []);
+
   // Toast handler (no change here)
   const showToastNotification = (message, type = 'info') => {
     setToastMessage(message);
@@ -87,20 +118,7 @@ const UserPage = () => {
     showToastNotification(`User "${userName}" added successfully!`, 'success');
   };
 
-  const assignNewTask = (userId, taskName, taskProject) => {
-    setUsers(prevUsers => {
-      return prevUsers.map(user => {
-        if (user.id === userId) {
-          return {
-            ...user,
-            tasks: [...user.tasks, { id: `t${Date.now()}`, project: taskProject, status: 'new', name: taskName }]
-          };
-        }
-        return user;
-      });
-    });
-    showToastNotification(`Task "${taskName}" assigned to ${userToAssignTask.name}!`, 'success');
-  };
+  // Remove assignNewTask as KanbanPage is source of truth for tasks
 
   const handleTaskStatusChange = (userId, taskId, newStatus) => {
     setUsers(prevUsers => {
@@ -139,6 +157,27 @@ const UserPage = () => {
     }
   };
   // --- END NEW ---
+
+  // --- NEW: Handle Task Deletion ---
+  const handleDeleteTask = (userId, taskId) => {
+    setUsers(prevUsers => {
+      return prevUsers.map(user => {
+        if (user.id === userId) {
+          const updatedTasks = user.tasks.filter(task => task.id !== taskId);
+          return { ...user, tasks: updatedTasks };
+        }
+        return user;
+      });
+    });
+    // If the selected user is the one whose task was deleted, update selectedUser state
+    if (selectedUser && selectedUser.id === userId) {
+      const updatedSelectedUser = users.find(user => user.id === userId);
+      if (updatedSelectedUser) {
+        setSelectedUser(updatedSelectedUser);
+      }
+    }
+    showToastNotification('Task deleted successfully!', 'success');
+  };
 
   const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -181,15 +220,6 @@ const UserPage = () => {
 
         <div className="assigned-tasks-section">
           <h3>Assigned Tasks</h3>
-          <button
-            className="assign-task-button"
-            onClick={() => {
-              setUserToAssignTask(selectedUser);
-              setShowAssignTaskModal(true);
-            }}
-          >
-            ASSIGN NEW TASK
-          </button>
           <div className="task-list">
             {selectedUser.tasks.length > 0 ? (
               selectedUser.tasks.map(task => (
@@ -208,6 +238,15 @@ const UserPage = () => {
                       <option value="ongoing">Ongoing</option>
                       <option value="completed">Completed</option>
                     </select>
+                    <button
+                      className="delete-task-button"
+                      onClick={() => handleDeleteTask(selectedUser.id, task.id)}
+                      title="Delete Task"
+                      aria-label="Delete Task"
+                      type="button"
+                    >
+                      🗑️
+                    </button>
                   </div>
                 </div>
               ))
@@ -216,6 +255,9 @@ const UserPage = () => {
             )}
           </div>
         </div>
+        <p className="assign-task-message" style={{ marginTop: '1rem', fontStyle: 'italic', color: 'var(--text-secondary-color)' }}>
+          If you want to assign task, assign on kanban page
+        </p>
       </div>
     );
   };
@@ -255,7 +297,6 @@ const UserPage = () => {
                   <td>{user.id}</td>
                   <td>{user.name}</td>
                   <td>
-                    {/* --- NEW: Connect delete button to handler --- */}
                     <button
                       className="delete-button"
                       onClick={(event) => handleDeleteUser(user.id, user.name, event)}
@@ -263,7 +304,6 @@ const UserPage = () => {
                     >
                       🗑️
                     </button>
-                    {/* --- END NEW --- */}
                   </td>
                 </tr>
               ))
@@ -292,7 +332,7 @@ const UserPage = () => {
         <AssignTaskModal
           isOpen={showAssignTaskModal}
           onClose={() => setShowAssignTaskModal(false)}
-          onAssignTask={assignNewTask}
+          onAssignTask={() => {}}
           user={userToAssignTask}
         />
       )}

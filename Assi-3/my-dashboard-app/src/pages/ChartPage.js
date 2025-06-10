@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   PieChart, Pie, Cell,
    LineChart, Line, AreaChart, Area,
+  BarChart, Bar,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 import './PageStyles.css'; // For basic page container styling
@@ -52,7 +53,7 @@ const ChartPage = () => {
   // this chart will show 0 for all users unless you update your KanbanPage.js
   // to include assignment functionality again.
   const userTaskData = users.map(user => {
-    const assignedTaskCount = kanbanTasks.filter(task => task.assignedTo === user.id).length;
+    const assignedTaskCount = kanbanTasks.filter(task => Number(task.assignedTo) === user.id).length;
     return {
       name: user.name,
       tasksAssigned: assignedTaskCount,
@@ -85,12 +86,12 @@ const ChartPage = () => {
           >
             Pie Chart
           </button>
-          {/* <button
+          <button
             className={selectedChart === 'bar' ? 'active' : ''}
             onClick={() => setSelectedChart('bar')}
           >
             Bar Chart
-          </button> */}
+          </button>
           <button
             className={selectedChart === 'line' ? 'active' : ''}
             onClick={() => setSelectedChart('line')}
@@ -138,7 +139,7 @@ const ChartPage = () => {
             </div>
           )}
 
-          {/* {selectedChart === 'bar' && (
+          {selectedChart === 'bar' && (
             <div className="chart-container">
               <h2>Tasks Assigned Per User</h2>
               {userTaskData.every(user => user.tasksAssigned === 0) && userTaskData.length > 0 ? (
@@ -162,7 +163,7 @@ const ChartPage = () => {
               )}
               <p className="chart-description">Displays the number of tasks assigned to each user.</p>
             </div>
-          )} */}
+          )}
 
           {selectedChart === 'line' && (
             <div className="chart-container">

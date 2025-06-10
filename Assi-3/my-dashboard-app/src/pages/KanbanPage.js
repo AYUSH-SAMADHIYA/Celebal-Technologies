@@ -4,13 +4,26 @@ import './KanbanPage.css'; // Specific Kanban board styles
 import ToastNotification from '../components/toast/ToastNotification'; // Reusing Toast
 
 // Reusable Kanban Column Component - MOVED OUTSIDE KanbanPage
-const KanbanColumn = ({ title, status, columnTasks, handleMoveTask, handleDeleteTask }) => (
+const KanbanColumn = ({ title, status, columnTasks, handleMoveTask, handleDeleteTask, handleAssignUser, users }) => (
     <div className="kanban-column">
       <h3 className="column-title">{title}</h3>
       <div className="task-list">
         {columnTasks.map(task => (
           <div key={task.id} className="kanban-task-card">
             <span className="task-title">{task.title}</span>
+            <div>
+              <label htmlFor={`assign-user-${task.id}`}>Assign to:</label>
+              <select
+                id={`assign-user-${task.id}`}
+                value={task.assignedTo || ''}
+                onChange={(e) => handleAssignUser(task.id, e.target.value)}
+              >
+                <option value="">Unassigned</option>
+                {users.map(user => (
+                  <option key={user.id} value={user.id}>{user.name}</option>
+                ))}
+              </select>
+            </div>
             <div className="task-actions">
               {status !== 'todo' && (
                 <button
@@ -53,7 +66,14 @@ const KanbanPage = () => {
       const parsedTasks = storedTasks ? JSON.parse(storedTasks) : null;
       // Ensure parsedTasks is an array, otherwise fall back to initial data
       if (Array.isArray(parsedTasks)) {
-        return parsedTasks;
+        // Migration: Ensure all tasks have assignedTo property
+        const migratedTasks = parsedTasks.map(task => {
+          if (!Object.prototype.hasOwnProperty.call(task, 'assignedTo')) {
+            return { ...task, assignedTo: '' };
+          }
+          return task;
+        });
+        return migratedTasks;
       }
     } catch (e) {
       // If parsing fails (e.g., invalid JSON), log error and use initial data
@@ -61,13 +81,24 @@ const KanbanPage = () => {
     }
     // Fallback to initial dummy data if localStorage is empty, invalid, or parsing failed
     return [
-      { id: 'k1', title: 'Setup project repository', status: 'todo' },
-      { id: 'k2', title: 'Design user interface', status: 'inprogress' },
-      { id: 'k3', title: 'Implement login page', status: 'done' },
-      { id: 'k4', title: 'Write API documentation', status: 'done' },
+      { id: 'k1', title: 'Setup project repository', status: 'todo', assignedTo: '' },
+      { id: 'k2', title: 'Design user interface', status: 'inprogress', assignedTo: '' },
+      { id: 'k3', title: 'Implement login page', status: 'done', assignedTo: '' },
+      { id: 'k4', title: 'Write API documentation', status: 'done', assignedTo: '' },
     ];
   });
   const [newTaskInput, setNewTaskInput] = useState('');
+  const [newTaskUser, setNewTaskUser] = useState(''); // New state for selected user on add task
+  const [users, setUsers] = useState(() => {
+    const storedUsers = localStorage.getItem('dashboardUsers');
+    try {
+      const parsedUsers = storedUsers ? JSON.parse(storedUsers) : [];
+      return Array.isArray(parsedUsers) ? parsedUsers : [];
+    } catch (e) {
+      console.error("Error parsing users from localStorage:", e);
+      return [];
+    }
+  });
 
   // State for Toast Notifications
   const [toastMessage, setToastMessage] = useState('');
@@ -97,13 +128,20 @@ const KanbanPage = () => {
       showToastNotification('Task name cannot be empty!', 'error');
       return;
     }
+    // Optional: Validate user selection if required
+    // if (newTaskUser === '') {
+    //   showToastNotification('Please select a user to assign the task.', 'error');
+    //   return;
+    // }
     const newTask = {
       id: `k${Date.now()}`, // Unique ID for the task
       title: newTaskInput.trim(),
       status: 'todo', // New tasks start in 'To Do' column
+      assignedTo: newTaskUser ? Number(newTaskUser) : '',
     };
     setTasks([...tasks, newTask]);
     setNewTaskInput(''); // Clear input field
+    setNewTaskUser(''); // Clear user selection
     showToastNotification('Task added successfully!', 'success');
   };
 
@@ -137,6 +175,17 @@ const KanbanPage = () => {
     }));
   };
 
+  // --- Assign User to Task ---
+  const handleAssignUser = (taskId, userId) => {
+    setTasks(tasks.map(task => {
+      if (task.id === taskId) {
+        return { ...task, assignedTo: userId ? Number(userId) : '' };
+      }
+      return task;
+    }));
+    showToastNotification('Task assignment updated.', 'success');
+  };
+
   // Filter tasks for each column
   const todoTasks = tasks.filter(task => task.status === 'todo');
   const inProgressTasks = tasks.filter(task => task.status === 'inprogress');
@@ -148,21 +197,31 @@ const KanbanPage = () => {
         <h1 className="kanban-board-title">Kanban Board</h1>
 
         <div className="add-task-section">
-          <input
-            type="text"
-            className="new-task-input"
-            placeholder="Enter new task"
-            value={newTaskInput}
-            onChange={(e) => setNewTaskInput(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                handleAddTask();
-              }
-            }}
-          />
-          <button className="add-task-button" onClick={handleAddTask}>
-            Add Task
-          </button>
+        <input
+          type="text"
+          className="new-task-input"
+          placeholder="Enter new task"
+          value={newTaskInput}
+          onChange={(e) => setNewTaskInput(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              handleAddTask();
+            }
+          }}
+        />
+        <select
+          className="new-task-user-select"
+          value={newTaskUser}
+          onChange={(e) => setNewTaskUser(e.target.value)}
+        >
+          <option value="">Assign to user (optional)</option>
+          {users.map(user => (
+            <option key={user.id} value={user.id}>{user.name}</option>
+          ))}
+        </select>
+        <button className="add-task-button" onClick={handleAddTask}>
+          Add Task
+        </button>
         </div>
 
         <div className="kanban-columns-container">
@@ -173,6 +232,8 @@ const KanbanPage = () => {
             columnTasks={todoTasks}
             handleMoveTask={handleMoveTask}
             handleDeleteTask={handleDeleteTask}
+            handleAssignUser={handleAssignUser}
+            users={users}
           />
           <KanbanColumn
             title="In Progress"
@@ -180,6 +241,8 @@ const KanbanPage = () => {
             columnTasks={inProgressTasks}
             handleMoveTask={handleMoveTask}
             handleDeleteTask={handleDeleteTask}
+            handleAssignUser={handleAssignUser}
+            users={users}
           />
           <KanbanColumn
             title="Done"
@@ -187,17 +250,19 @@ const KanbanPage = () => {
             columnTasks={doneTasks}
             handleMoveTask={handleMoveTask}
             handleDeleteTask={handleDeleteTask}
+            handleAssignUser={handleAssignUser}
+            users={users}
           />
         </div>
       </div>
 
       {/* Toast Notification */}
-      <ToastNotification
-        message={toastMessage}
-        type={toastType}
-        show={showToast}
-        onClose={handleCloseToast}
-      />
+        <ToastNotification
+          message={toastMessage}
+          type={toastType}
+          show={showToast}
+          onClose={handleCloseToast}
+        />
     </div>
   );
 };
