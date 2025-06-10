@@ -10,11 +10,12 @@ This is a comprehensive web-based dashboard application built with React, design
 * **User Management:**
     * Add new users with names.
     * View detailed user profiles showing assigned tasks and their statuses.
-    * Assign new tasks directly to users from their profile page.
+    * Check , update and delete tasks of users from their profile page.
     * Delete users (which also unassigns their tasks from the Kanban board).
 * **Kanban Board:**
     * A visual task management system with "To Do," "In Progress," and "Done" columns.
     * Easily move tasks between columns with left/right arrows.
+    * Can assign task to any specific user.
     * Delete tasks.
 * **Calendar:**
     * View events in Month, Week, or Day modes.
