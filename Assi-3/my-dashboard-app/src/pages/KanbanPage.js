@@ -18,7 +18,7 @@ const KanbanColumn = ({ title, status, columnTasks, handleMoveTask, handleDelete
                 value={task.assignedTo || ''}
                 onChange={(e) => handleAssignUser(task.id, e.target.value)}
               >
-                <option value="">Unassigned</option>
+                <option value="">Admin</option>
                 {users.map(user => (
                   <option key={user.id} value={user.id}>{user.name}</option>
                 ))}
@@ -214,7 +214,7 @@ const KanbanPage = () => {
           value={newTaskUser}
           onChange={(e) => setNewTaskUser(e.target.value)}
         >
-          <option value="">Assign to user (optional)</option>
+          <option value="">Admin</option>
           {users.map(user => (
             <option key={user.id} value={user.id}>{user.name}</option>
           ))}
