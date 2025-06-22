@@ -7,83 +7,108 @@
 .kanban-board-container {
   display: flex;
   gap: 20px;
-  overflow-x: auto; /* Allows horizontal scrolling if many columns */
-  padding-bottom: 10px; /* Space for scrollbar */
+  overflow-x: auto;
+  padding-bottom: 15px;
 }
 
 .kanban-column {
-  flex: 1; /* Distribute space evenly */
-  min-width: 280px; /* Minimum width for each column */
-  background-color: #f4f5f7; /* Light background for columns */
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  background-color: var(--kanban-column-bg); /* Use variable */
   border-radius: 8px;
   padding: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px var(--box-shadow-medium); /* Use variable */
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .kanban-column h3 {
   margin-top: 0;
   padding: 10px 15px;
   border-radius: 6px;
-  color: white;
+  color: white; /* Column headers remain white regardless of theme */
   text-align: center;
   font-size: 1.1em;
   margin-bottom: 15px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px var(--box-shadow-light); /* Use variable */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .kanban-tasks {
-  flex-grow: 1; /* Allow tasks container to take available space */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Space between tasks */
-  min-height: 100px; /* Ensure column has some height even if empty for dropping */
+  gap: 10px;
+  min-height: 100px;
+  padding-bottom: 10px;
 }
 
 .kanban-card {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
+  background-color: var(--kanban-card-bg); /* Use variable */
+  border: 1px solid var(--kanban-card-border); /* Use variable */
   border-radius: 6px;
   padding: 15px;
-  cursor: grab; /* Indicates draggable */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  cursor: grab;
+  box-shadow: 0 1px 3px var(--box-shadow-medium); /* Use variable */
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  color: var(--text-color); /* Ensure text color updates */
 }
 
 .kanban-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 3px 6px var(--box-shadow-light); /* Use variable */
 }
 
 .kanban-card h4 {
   margin-top: 0;
   margin-bottom: 8px;
   font-size: 1em;
-  color: #333;
+  color: var(--heading-color); /* Use variable */
 }
 
 .kanban-card p {
   margin: 0;
   font-size: 0.9em;
-  color: #666;
+  color: var(--text-color); /* Use variable */
 }
 
 .kanban-empty-slot {
-  background-color: #e0e0e0;
-  border: 2px dashed #bbb;
+  background-color: var(--kanban-empty-slot-bg); /* Use variable */
+  border: 2px dashed var(--kanban-empty-slot-border); /* Use variable */
   border-radius: 6px;
   padding: 20px;
   text-align: center;
-  color: #888;
+  color: var(--kanban-empty-slot-text); /* Use variable */
   font-style: italic;
-  min-height: 60px; /* Visual space for dropping */
+  min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 /* Dragging visual feedback */
 .kanban-card:active {
   cursor: grabbing;
+}
+
+.add-task-btn {
+  background-color: #3498db; /* Default button color, can be customized or variable too */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 15px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.add-task-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
 }
