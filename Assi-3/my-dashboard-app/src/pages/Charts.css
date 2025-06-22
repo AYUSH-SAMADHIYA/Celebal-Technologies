@@ -1,0 +1,94 @@
+/* src/pages/Charts.css */
+
+.charts-page {
+  padding: 20px;
+  background-color: #f9f9f9; /* Consistent with main content background */
+  min-height: calc(100vh - 60px); /* Adjust based on your header/footer if any */
+}
+
+.charts-page h2 {
+  color: #333;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 15px;
+  text-align: center; /* Center the main heading */
+}
+
+.chart-container-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* Allows charts to wrap to the next row */
+  gap: 30px; /* Space between individual chart sections */
+  justify-content: center; /* Center charts horizontally within the wrapper */
+  margin-top: 30px;
+}
+
+.chart-section {
+  background-color: #ffffff;
+  border-radius: 10px; /* Slightly more rounded corners for charts */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* More prominent shadow */
+  padding: 25px;
+  flex: 1; /* Allows sections to grow and shrink */
+  min-width: 350px; /* Minimum width before forcing a wrap */
+  max-width: 550px; /* Max width to keep charts from becoming too wide */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center chart title and canvas horizontally */
+  transition: transform 0.2s ease-in-out; /* Smooth transition on hover */
+}
+
+.chart-section:hover {
+  transform: translateY(-5px); /* Lift card slightly on hover */
+}
+
+.chart-section h3 {
+  margin-top: 0;
+  margin-bottom: 25px; /* More space below chart title */
+  color: #444; /* Slightly darker color for section titles */
+  font-size: 1.5em; /* Larger font size for section titles */
+  text-align: center;
+}
+
+.chart-canvas-wrapper {
+  position: relative; /* Essential for Chart.js responsiveness */
+  width: 100%; /* Take full width of its parent (.chart-section) */
+  height: 380px; /* Fixed height for consistent chart rendering */
+  display: flex; /* Use flex to center the canvas if needed */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Specific styling for the Pie chart wrapper to ensure it's circular/square */
+.pie-chart-wrapper {
+  max-width: 450px; /* Keep pie chart from being too wide */
+  height: 380px; /* Maintain consistent height */
+  margin: 0 auto; /* Center the pie chart within its section if it's smaller */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .chart-section {
+    min-width: 45%; /* Two columns on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .charts-page {
+    padding: 15px; /* Reduce padding on smaller screens */
+  }
+  .chart-container-wrapper {
+    flex-direction: column; /* Stack charts vertically on small screens */
+    align-items: center; /* Center stacked charts */
+    gap: 25px;
+  }
+  .chart-section {
+    min-width: 90%; /* Take up most of the width */
+    max-width: 95%;
+    padding: 20px;
+  }
+  .chart-canvas-wrapper {
+    height: 300px; /* Adjust height for smaller screens */
+  }
+  .pie-chart-wrapper {
+    max-width: 90%;
+  }
+}

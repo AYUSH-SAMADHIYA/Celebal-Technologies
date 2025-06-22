@@ -1,0 +1,64 @@
+/* src/components/KPICard.css */
+
+.kpi-card {
+  /* Basic Box Model */
+  border: 1px solid #e0e0e0; /* Light grey border */
+  border-radius: 8px; /* Slightly rounded corners */
+  padding: 20px; /* Internal spacing */
+  text-align: center; /* Center the content */
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  min-width: 220px; /* Minimum width to prevent content crunching */
+  max-width: 280px; /* Max width for better layout control in flex containers */
+  flex: 1; /* Allows cards to grow and shrink in a flex container */
+  display: flex; /* Use flexbox for internal layout */
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center items horizontally within the card */
+  justify-content: center; /* Center items vertically */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.kpi-card:hover {
+  transform: translateY(-5px); /* Lift card slightly on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+}
+
+.kpi-icon {
+  font-size: 2.5em; /* Larger icon size */
+  margin-bottom: 15px; /* Space below the icon */
+  color: #007bff; /* A nice blue color for icons */
+}
+
+.kpi-content h3 {
+  margin: 0 0 8px 0; /* Space below the title */
+  font-size: 1.2em; /* Readable title size */
+  color: #333333; /* Darker text for title */
+}
+
+.kpi-content p {
+  margin: 0; /* Remove default paragraph margin */
+  font-size: 2em; /* Large and bold value */
+  font-weight: bold; /* Make the value stand out */
+  color: #0056b3; /* Slightly darker blue for the value */
+}
+
+/* Optional: Responsive adjustments */
+@media (max-width: 768px) {
+  .kpi-card {
+    min-width: unset; /* Remove min-width on smaller screens */
+    width: 90%; /* Occupy more width */
+    margin-bottom: 20px; /* Add space between cards when stacked */
+  }
+}
+
+/* Example of how the container for these cards might look in App.css or Dashboard.css */
+/*
+.kpi-cards-container {
+  display: flex;
+  flex-wrap: wrap; // Allows cards to wrap to the next line
+  justify-content: center; // Center cards horizontally
+  gap: 25px; // Space between cards
+  margin-top: 50px;
+  padding: 0 20px; // Add some padding on the sides
+}
+*/
