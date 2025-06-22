@@ -50,11 +50,15 @@ my-dashboard-app/
 
 ## Screenshots
 
-![Dashboard View](link-to-your-dashboard-screenshot.png)`)
-![Kanban Page](link-to-your-kanban-screenshot.png)`)
-![Calendar Page](link-to-your-kanban-screenshot.png)`)
-![User Page](link-to-your-kanban-screenshot.png)`)
-![Chart Page](link-to-your-kanban-screenshot.png)`)
+![Dashboard View](./Screenshots/dashboard.png)`)
+
+![Kanban Page](./Screenshots/kanban.png)`)
+
+![Calendar Page](./Screenshots/calendar.png)`)
+
+![User Page](./Screenshots/users.png)`)
+
+![Chart Page](./Screenshots/charts.png)`)
 
 
 ## How to Start
@@ -70,8 +74,8 @@ Follow these steps to get the project up and running on your local machine.
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
-    cd <my-dashboard-app>  
+    git clone https://github.com/AYUSH-SAMADHIYA/Celebal-Technologies/tree/main/Assi-3/my-dashboard-app
+    cd my-dashboard-app
     ```
 
 ### Running the Application
