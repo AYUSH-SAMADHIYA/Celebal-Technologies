@@ -60,12 +60,6 @@ This is a comprehensive web-based dashboard application built with React, design
 * **ESLint:** For code quality and consistency.
 * **CSS:** For styling and layout.
 
-## Folder Structure
-
-Okay, I've updated the README.md to include the folder structure. I've placed it after the "Technologies Used" section for better flow.
-
-README.md (Updated)
-Markdown
 
 # My Dashboard App
 
