@@ -6,25 +6,25 @@ This is a comprehensive web-based dashboard application built with React, design
 
 ## Features
 
-* **Dashboard Overview:** Get a quick glance at key metrics like total users, total tasks (broken down by status: New, Ongoing, Completed), and upcoming events.
-* **User Management:**
-    * Add new users with names.
-    * View detailed user profiles showing assigned tasks and their statuses.
-    * Check , update and delete tasks of users from their profile page.
-    * Delete users (which also unassigns their tasks from the Kanban board).
-* **Kanban Board:**
-    * A visual task management system with "To Do," "In Progress," and "Done" columns.
-    * Easily move tasks between columns with left/right arrows.
-    * Can assign task to any specific user.
-    * Delete tasks.
-* **Calendar:**
-    * View events in Month, Week, or Day modes.
-    * Navigate through dates (previous, next, today).
-    * Add new events for specific dates.
-    * Delete existing events.
-* **Charts & Analytics:**
-* **Persistent Data:** All tasks events are stored in your browser's Local Storage, so your data persists even after you close and reopen the browser.
-* **Toast Notifications:** Provides real-time feedback for actions like adding/deleting tasks, and moving tasks.
+-   **Dashboard Overview:** Get a quick glance at key metrics like total users, total tasks (broken down by status: New, Ongoing, Completed), and upcoming events.
+-   **User Management:**
+    -   Add new users with names.
+    -   View detailed user profiles showing assigned tasks and their statuses.
+    -   Check, update and delete tasks of users from their profile page.
+    -   Delete users (which also unassigns their tasks from the Kanban board).
+-   **Kanban Board:**
+    -   A visual task management system with "To Do," "In Progress," and "Done" columns.
+    -   Easily move tasks between columns with left/right arrows.
+    -   Can assign tasks to any specific user.
+    -   Delete tasks.
+-   **Calendar:**
+    -   View events in Month, Week, or Day modes.
+    -   Navigate through dates (previous, next, today).
+    -   Add new events for specific dates.
+    -   Delete existing events.
+-   **Charts & Analytics:** Visual representations of your task and user data.
+-   **Persistent Data:** All tasks and events are stored in your browser's Local Storage, so your data persists even after you close and reopen the browser.
+-   **Toast Notifications:** Provides real-time feedback for actions like adding/deleting tasks and moving tasks.
 
 ## Screenshots
 
@@ -47,24 +47,22 @@ This is a comprehensive web-based dashboard application built with React, design
 ![Chart_Page Overview](./Screenshots/6.png)
 ![Chart_Page Overview](./Screenshots/7.png)
 
-
-
-
-
 ## Technologies Used
 
-* **React:** Frontend JavaScript library for building user interfaces.
-* **React Router DOM:** For declarative routing in React applications.
-* **date-fns:** A modern JavaScript date utility library.
-* **Local Storage:** For client-side data persistence.
-* **ESLint:** For code quality and consistency.
-* **CSS:** For styling and layout.
-
-
+-   **React:** Frontend JavaScript library for building user interfaces.
+-   **React Router DOM:** For declarative routing in React applications.
+-   **date-fns:** A modern JavaScript date utility library.
+-   **Local Storage:** For client-side data persistence.
+-   **ESLint:** For code quality and consistency.
+-   **CSS:** For styling and layout.
 
 ## Folder Structure
+
+The project follows a standard feature-sliced design pattern to keep the code organized, scalable, and easy to maintain.
+
+```
 my-dashboard-app/
-├── public/                         
+├── public/
 │   ├── index.html                 // Main HTML file where the React app mounts
 │   ├── favicon.ico                // Favicon shown in browser tab
 │   └── ...                        // Other public assets
@@ -72,21 +70,21 @@ my-dashboard-app/
 ├── src/
 │   ├── assets/                    // Static assets like images/icons
 │   │   ├── profile.jpg            // Default profile picture
-│   │   ├── dashboard-overview.png// Screenshot for README
-│   │   ├── kanban-board.png      // Screenshot for README
-│   │   └── ...                   // Other images/icons
-│
+│   │   ├── dashboard-overview.png // Screenshot for README
+│   │   ├── kanban-board.png       // Screenshot for README
+│   │   └── ...                    // Other images/icons
+│   │
 │   ├── components/                // Reusable UI components
-│   │   ├── modals/               // Modal components for forms
+│   │   ├── modals/                // Modal components for forms
 │   │   │   ├── AddEventModal.js
 │   │   │   ├── AddUserModal.js
 │   │   │   ├── AssignTaskModal.js
-│   │   │   └── Modal.css         // Common modal styles
+│   │   │   └── Modal.css          // Common modal styles
 │   │   ├── toast/
 │   │   │   ├── ToastNotification.js
 │   │   │   └── ToastNotification.css
-│   │   └── ...                   // Other general-purpose components
-│
+│   │   └── ...                    // Other general-purpose components
+│   │
 │   ├── pages/                     // Page-level components
 │   │   ├── CalendarPage.js
 │   │   ├── CalendarPage.css
@@ -96,10 +94,10 @@ my-dashboard-app/
 │   │   ├── DashboardPage.css
 │   │   ├── KanbanPage.js
 │   │   ├── KanbanPage.css
-│   │   ├── PageStyles.css        // Shared styles for pages
+│   │   ├── PageStyles.css         // Shared styles for pages
 │   │   ├── UserPage.js
 │   │   └── UserPage.css
-│
+│   │
 │   ├── App.js                     // Main app component and routes
 │   ├── App.css                    // Global app-wide styles
 │   ├── index.js                   // React app entry point
@@ -109,8 +107,7 @@ my-dashboard-app/
 ├── package.json
 ├── package-lock.json
 └── README.md
-
-
+```
 
 ## How to Run the App
 
@@ -120,8 +117,9 @@ Follow these steps to get a copy of the project up and running on your local mac
 
 Make sure you have the following installed on your machine:
 
-* [Node.js](https://nodejs.org/en/) (LTS version recommended)
-* [npm](https://www.npmjs.com/) (Node Package Manager, usually comes with Node.js) 
+-   [Node.js](https://nodejs.org/en/) (LTS version recommended)
+-   [npm](https://www.npmjs.com/) (Node Package Manager, usually comes with Node.js)
+
 ### Installation
 
 1.  **Clone the repository:**
@@ -131,24 +129,23 @@ Make sure you have the following installed on your machine:
     ```
 
 2.  **Install dependencies:**
-    ```
+    ```bash
     npm install
     ```
 
 ### Running the Development Server
 
 1.  **Start the application:**
-  
-    ```
+    ```bash
     npm start
     ```
-2.  The application will open in your default web browser at `http://localhost:3000`.
 
+2.  The application will open in your default web browser at `http://localhost:3000`.
 
 ## Usage
 
-* Navigate through the app using the top navigation bar to access Dashboard, Users, Kanban, Calendar, and Charts pages.
-* On the **Users** page, add new users. Click on a user to view their profile and update tasks.
-* On the **Kanban** board, assign new tasks to users and move them between columns.
-* On the **Calendar** page, add and manage events.
-* The **Dashboard** and **Charts** pages will automatically reflect changes made on the Users and Kanban pages.
+-   Navigate through the app using the top navigation bar to access the **Dashboard**, **Users**, **Kanban**, **Calendar**, and **Charts** pages.
+-   On the **Users** page, add new users. Click on a user to view their profile and manage their tasks.
+-   On the **Kanban** board, assign new tasks to users and move them between columns to update their status.
+-   On the **Calendar** page, add and manage events for specific dates.
+-   The **Dashboard** and **Charts** pages will automatically reflect any changes made to users, tasks, and events.
