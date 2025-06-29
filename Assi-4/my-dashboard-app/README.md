@@ -61,46 +61,6 @@ This is a comprehensive web-based dashboard application built with React, design
 * **CSS:** For styling and layout.
 
 
-# My Dashboard App
-
-## Project Overview
-
-This is a comprehensive web-based dashboard application built with React, designed to help individuals or small teams manage users, tasks, and events efficiently. It features a responsive UI, intuitive navigation, and data persistence using Local Storage, ensuring that your data remains available across browser sessions.
-
-## Features
-
-* **Dashboard Overview:** Get a quick glance at key metrics like total users, total tasks (broken down by status: New, Ongoing, Completed), and upcoming events.
-* **User Management:**
-    * Add new users with names, emails, and roles.
-    * View detailed user profiles showing assigned tasks and their statuses.
-    * Assign new tasks directly to users from their profile page.
-    * Delete users (which also unassigns their tasks from the Kanban board).
-* **Kanban Board:**
-    * A visual task management system with "To Do," "In Progress," and "Done" columns.
-    * Add new tasks and assign them to existing users.
-    * Easily move tasks between columns with left/right arrows.
-    * Delete tasks.
-* **Calendar:**
-    * View events in Month, Week, or Day modes.
-    * Navigate through dates (previous, next, today).
-    * Add new events for specific dates.
-    * Delete existing events.
-* **Charts & Analytics:**
-    * Visualize data with a bar chart showing the number of tasks assigned to each user. This chart dynamically updates as tasks are assigned or unassigned on the User and Kanban pages.
-* **Persistent Data:** All users, tasks, and events are stored in your browser's Local Storage, so your data persists even after you close and reopen the browser.
-* **Toast Notifications:** Provides real-time feedback for actions like adding/deleting users/tasks, and moving tasks.
-
-
-
-
-## Technologies Used
-
-* **React:** Frontend JavaScript library for building user interfaces.
-* **React Router DOM:** For declarative routing in React applications.
-* **date-fns:** A modern JavaScript date utility library.
-* **Local Storage:** For client-side data persistence.
-* **ESLint:** For code quality and consistency.
-* **CSS:** For styling and layout.
 
 ## Folder Structure
 
