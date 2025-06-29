@@ -71,9 +71,9 @@ my-dashboard-app/
 │   └── ... (other public assets)
 ├── src/
 │   ├── assets/
-│   │   ├── profile.jpg           # Default profile picture
-│   │   └── dashboard-overview.png  # Screenshot for README (if placed here)
-│   │   └── kanban-board.png      # Screenshot for README (if placed here)
+│   │   ├── profile.jpg          
+│   │   └── dashboard-overview.png
+│   │   └── kanban-board.png    
 │   │   └── ... (other images/icons)
 │   ├── components/
 │   │   ├── modals/
@@ -94,13 +94,13 @@ my-dashboard-app/
 │   │   ├── DashboardPage.css
 │   │   ├── KanbanPage.js
 │   │   ├── KanbanPage.css
-│   │   ├── PageStyles.css        # Common styles for all pages
+│   │   ├── PageStyles.css      
 │   │   ├── UserPage.js
 │   │   └── UserPage.css
-│   ├── App.js                    # Main application component, routing
-│   ├── App.css                   # Global application styles
-│   ├── index.js                  # Entry point for React app
-│   └── index.css                 # Global CSS (e.g., body, root styles)
+│   ├── App.js                  
+│   ├── App.css                   
+│   ├── index.js               
+│   └── index.css                 
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
