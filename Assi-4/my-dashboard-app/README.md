@@ -63,29 +63,31 @@ This is a comprehensive web-based dashboard application built with React, design
 
 
 ## Folder Structure
-
 my-dashboard-app/
-├── public/
-│   ├── index.html
-│   └── favicon.ico
-│   └── ... (other public assets)
+├── public/                         
+│   ├── index.html                 // Main HTML file where the React app mounts
+│   ├── favicon.ico                // Favicon shown in browser tab
+│   └── ...                        // Other public assets
+│
 ├── src/
-│   ├── assets/
-│   │   ├── profile.jpg          
-│   │   └── dashboard-overview.png
-│   │   └── kanban-board.png    
-│   │   └── ... (other images/icons)
-│   ├── components/
-│   │   ├── modals/
+│   ├── assets/                    // Static assets like images/icons
+│   │   ├── profile.jpg            // Default profile picture
+│   │   ├── dashboard-overview.png// Screenshot for README
+│   │   ├── kanban-board.png      // Screenshot for README
+│   │   └── ...                   // Other images/icons
+│
+│   ├── components/                // Reusable UI components
+│   │   ├── modals/               // Modal components for forms
 │   │   │   ├── AddEventModal.js
 │   │   │   ├── AddUserModal.js
 │   │   │   ├── AssignTaskModal.js
-│   │   │   └── Modal.css         # Common modal styles
+│   │   │   └── Modal.css         // Common modal styles
 │   │   ├── toast/
 │   │   │   ├── ToastNotification.js
 │   │   │   └── ToastNotification.css
-│   |   | └── ... (other general-purpose components)
-│   ├── pages/
+│   │   └── ...                   // Other general-purpose components
+│
+│   ├── pages/                     // Page-level components
 │   │   ├── CalendarPage.js
 │   │   ├── CalendarPage.css
 │   │   ├── ChartPage.js
@@ -94,17 +96,20 @@ my-dashboard-app/
 │   │   ├── DashboardPage.css
 │   │   ├── KanbanPage.js
 │   │   ├── KanbanPage.css
-│   │   ├── PageStyles.css      
+│   │   ├── PageStyles.css        // Shared styles for pages
 │   │   ├── UserPage.js
 │   │   └── UserPage.css
-│   ├── App.js                  
-│   ├── App.css                   
-│   ├── index.js               
-│   └── index.css                 
+│
+│   ├── App.js                     // Main app component and routes
+│   ├── App.css                    // Global app-wide styles
+│   ├── index.js                   // React app entry point
+│   └── index.css                  // Global CSS (body, layout styles)
+│
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
-├── README.md
+└── README.md
+
 
 
 ## How to Run the App
