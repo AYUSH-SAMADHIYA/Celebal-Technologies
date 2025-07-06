@@ -50,15 +50,15 @@ my-dashboard-app/
 
 ## Screenshots
 
-![Dashboard View](./Screenshots/dashboard.png)`)
+![Dashboard View](./Screenshots/dashboard.png)
 
-![Kanban Page](./Screenshots/kanban.png)`)
+![Kanban Page](./Screenshots/kanban.png)
 
-![Calendar Page](./Screenshots/calendar.png)`)
+![Calendar Page](./Screenshots/calendar.png)
 
-![User Page](./Screenshots/users.png)`)
+![User Page](./Screenshots/users.png)
 
-![Chart Page](./Screenshots/charts.png)`)
+![Chart Page](./Screenshots/charts.png)
 
 
 ## How to Start
