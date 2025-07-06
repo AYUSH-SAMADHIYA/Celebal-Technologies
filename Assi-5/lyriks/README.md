@@ -99,6 +99,6 @@ Shazam Core API (RapidAPI)
 Vite
 
 ## 📸 Screenshots
-![Home Page](.screenshots/1.png)
+![Home Page](./screenshots/1.png)
 
-![Music Player](.screenshots/2.png)
+![Music Player](./screenshots/2.png)
