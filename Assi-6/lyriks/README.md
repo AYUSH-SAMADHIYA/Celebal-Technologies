@@ -101,10 +101,4 @@ Vite
 ## 📸 Screenshots
 ![alt text](photo01.png)
 
-![alt text](photo02.png)
-
-![alt text](photo03.png)
-
-![alt text](photo04.png)
-
 ![alt text](photo05.png)
