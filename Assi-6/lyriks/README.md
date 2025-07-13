@@ -65,8 +65,8 @@ src/
 1️⃣ **Clone the repository:**
 
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/AYUSH-SAMADHIYA/Celebal-Technologies/tree/main/Assi-6/lyriks
+cd lyriks
 ```
 
 2️⃣ **Install dependencies**
