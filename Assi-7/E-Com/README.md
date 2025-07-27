@@ -46,7 +46,7 @@ The project follows a standard feature-sliced design pattern to keep the code or
 1️⃣ **Clone the repository:**
 
 ```bash
-git clone https://github.com/Garvit1904/Celebal_Technologies_Garvit.git
+git clone https://github.com/AYUSH-SAMADHIYA/Celebal-Technologies/tree/main/Assi-7/E-Com
 cd E-Com
 ```
 
